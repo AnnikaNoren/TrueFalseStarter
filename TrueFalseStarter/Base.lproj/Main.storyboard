@@ -48,7 +48,7 @@
                                             <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pHS-se-fli"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS4-HX-g9f">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS4-HX-g9f">
                                         <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,7 +62,7 @@
                                             <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qfk-Z2-crr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4y-1U-RTE">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4y-1U-RTE">
                                         <color key="backgroundColor" red="0.047058823529411764" green="0.47450980392156861" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Answer3Button"/>
@@ -75,7 +75,7 @@
                                             <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6EF-yV-0z5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-Zh-HrL">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-Zh-HrL">
                                         <color key="backgroundColor" red="0.047058823529411764" green="0.47450980392156861" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Answer4Button"/>
@@ -113,14 +113,14 @@
                             <constraint firstItem="K17-uy-MvB" firstAttribute="top" secondItem="Rfd-4s-ZVH" secondAttribute="bottom" constant="60" id="5i8-jd-sJB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rfd-4s-ZVH" secondAttribute="trailing" constant="20" id="8Yq-Cj-DtU"/>
                             <constraint firstItem="Rfd-4s-ZVH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Dug-Db-oHe"/>
-                            <constraint firstItem="Rfd-4s-ZVH" firstAttribute="top" secondItem="nY1-PU-gwQ" secondAttribute="bottom" constant="60" id="Eoo-zM-N5u"/>
+                            <constraint firstItem="Rfd-4s-ZVH" firstAttribute="top" secondItem="nY1-PU-gwQ" secondAttribute="bottom" constant="55" id="Eoo-zM-N5u"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="FMg-76-4vb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nY1-PU-gwQ" secondAttribute="trailing" constant="20" id="HR4-Lp-cJS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I3V-ih-1Ky" secondAttribute="trailing" constant="20" id="HXb-pg-C6R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K17-uy-MvB" secondAttribute="bottom" constant="40" id="RdV-1O-Idx"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Uir-06-g5W"/>
                             <constraint firstItem="nY1-PU-gwQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="d1d-5g-cAn"/>
-                            <constraint firstItem="nY1-PU-gwQ" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="20" id="j0E-zq-AIt"/>
+                            <constraint firstItem="nY1-PU-gwQ" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="35" id="j0E-zq-AIt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="K17-uy-MvB" secondAttribute="trailing" constant="20" id="nLx-ig-acA"/>
                             <constraint firstItem="K17-uy-MvB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="qG8-U8-s9b"/>
                         </constraints>

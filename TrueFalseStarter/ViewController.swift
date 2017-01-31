@@ -19,7 +19,10 @@ class ViewController: UIViewController {
     //array to hold the index of questions already used
     var usedIndexes = [Int]()
     
+    //var for sounds
     var gameSound: SystemSoundID = 0
+    var rightSound: SystemSoundID = 0
+    var wrongSound: SystemSoundID = 0
     
     //create an instance of the TriviaQuestionModel
     let triviaQuestionModel = TriviaQuestionModel()
@@ -35,7 +38,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadGameStartSound()
+        loadGameSounds()
         // Start game
         playGameStartSound()
         displayQuestion()
@@ -94,18 +97,20 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = false
         
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        
     }
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
-        
+
         let selectedQuestionDictionary = triviaQuestionModel.questions[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDictionary.answer
         
-        let selectedAnswer: Int
+        //let selectedAnswer: Int
+        let selectedAnswer = sender.tag
         
-        switch sender {
+        /*switch sender {
         case trueButton:
             selectedAnswer = 0
         case falseButton:
@@ -116,16 +121,19 @@ class ViewController: UIViewController {
             selectedAnswer = 3
         default:
             selectedAnswer = 4
-        }
+        }*/
         
         if selectedAnswer == correctAnswer {
             correctQuestions += 1
             messageLabel.text = "Correct!"
+            playRightAnswerSound()
             //Answer4Button.setTitle(question.options[3], for: UIControlState.normal
         } else {
             messageLabel.text = "Sorry, wrong answer!"
+            playWrongAnswerSound()
         }
         
+        //loop through the buttons to make the wrong answers gray
         let buttons = [trueButton, falseButton, Answer3Button, Answer4Button]
         
         for i in 0..<buttons.count {
@@ -142,6 +150,13 @@ class ViewController: UIViewController {
             // Game is over
             displayScore()
         } else {
+            //re-set buttons to normal color
+            let buttons = [trueButton, falseButton, Answer3Button, Answer4Button]
+            
+            for i in 0..<buttons.count {
+                    buttons[i]?.setTitleColor(UIColor.white, for: .normal)
+                
+            }
             // Continue game
             displayQuestion()
         }
@@ -176,17 +191,32 @@ class ViewController: UIViewController {
         }
     }
     
-    func loadGameStartSound() {
+    func loadGameSounds() {
         let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-        let pathToSoundFile2 = Bundle.main.path(forResource: "Tech-07", ofType:"wav")
-        let pathToSoundFile3 = Bundle.main.path(forResource: "Tech-17", ofType:"wav")
+        let pathToSoundFile2 = Bundle.main.path(forResource: "RightSound", ofType:"wav")
+        let pathToSoundFile3 = Bundle.main.path(forResource: "WrongSound", ofType:"wav")
+        
         let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+        let soundURL2 = URL(fileURLWithPath: pathToSoundFile2!)
+        let soundURL3 = URL(fileURLWithPath: pathToSoundFile3!)
+        
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
+        AudioServicesCreateSystemSoundID(soundURL2 as CFURL, &rightSound)
+        AudioServicesCreateSystemSoundID(soundURL3 as CFURL, &wrongSound)
     }
     
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
     }
+    
+    func playRightAnswerSound() {
+        AudioServicesPlaySystemSound(rightSound)
+    }
+
+    func playWrongAnswerSound() {
+        AudioServicesPlaySystemSound(wrongSound)
+    }
+
     
     /*falseButton.setTitleColor(UIColor.darkGray, for: .disabled)
     falseButton.isEnabled = false*/
