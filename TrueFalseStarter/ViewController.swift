@@ -12,20 +12,26 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
+    //variables and constants
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
+    
     //array to hold the index of questions already used
     var usedIndexes = [Int]()
     
-    //var for sounds
+    //variables for sounds
     var gameSound: SystemSoundID = 0
     var rightSound: SystemSoundID = 0
     var wrongSound: SystemSoundID = 0
     
     //create an instance of the TriviaQuestionModel
     let triviaQuestionModel = TriviaQuestionModel()
+    
+    //setting up timer
+    var timer = Timer()
+    var timerCounter = 0
     
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
@@ -39,6 +45,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameSounds()
+        
         // Start game
         playGameStartSound()
         displayQuestion()
@@ -51,14 +58,17 @@ class ViewController: UIViewController {
     
     func displayQuestion() {
         messageLabel.text = ""
+        messageLabel.textColor = UIColor.orange
+        
+        //start the timer
+        startTimer()
         
         //get random number
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaQuestionModel.questions.count)
         
         
-        //test to see if random has already been used
+        //test to see if random has already been used, get another random until an unused one is found
         while usedIndexes.contains(indexOfSelectedQuestion) {
-            //if number already used, get another random and continue until an unused random is found
             indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: triviaQuestionModel.questions.count)
         }
         
@@ -96,6 +106,10 @@ class ViewController: UIViewController {
         // Display play again button
         playAgainButton.isHidden = false
         
+        //turn off timer
+        timer.invalidate()
+        
+        //Display results
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
@@ -103,32 +117,25 @@ class ViewController: UIViewController {
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
-
+        
+        //determine the correct answer from the struct
         let selectedQuestionDictionary = triviaQuestionModel.questions[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDictionary.answer
         
-        //let selectedAnswer: Int
+        //the button pushed is the sender with it's assigned tag
         let selectedAnswer = sender.tag
         
-        /*switch sender {
-        case trueButton:
-            selectedAnswer = 0
-        case falseButton:
-            selectedAnswer = 1
-        case Answer3Button:
-            selectedAnswer = 2
-        case Answer4Button:
-            selectedAnswer = 3
-        default:
-            selectedAnswer = 4
-        }*/
+        //turn off timer
+        timer.invalidate()
         
+        //check answer
         if selectedAnswer == correctAnswer {
             correctQuestions += 1
+            messageLabel.textColor = UIColor.green
             messageLabel.text = "Correct!"
             playRightAnswerSound()
-            //Answer4Button.setTitle(question.options[3], for: UIControlState.normal
         } else {
+            messageLabel.textColor = UIColor.red
             messageLabel.text = "Sorry, wrong answer!"
             playWrongAnswerSound()
         }
@@ -149,6 +156,7 @@ class ViewController: UIViewController {
         if questionsAsked == questionsPerRound {
             // Game is over
             displayScore()
+            
         } else {
             //re-set buttons to normal color
             let buttons = [trueButton, falseButton, Answer3Button, Answer4Button]
@@ -157,6 +165,7 @@ class ViewController: UIViewController {
                     buttons[i]?.setTitleColor(UIColor.white, for: .normal)
                 
             }
+            
             // Continue game
             displayQuestion()
         }
@@ -216,15 +225,18 @@ class ViewController: UIViewController {
     func playWrongAnswerSound() {
         AudioServicesPlaySystemSound(wrongSound)
     }
-
     
-    /*falseButton.setTitleColor(UIColor.darkGray, for: .disabled)
-    falseButton.isEnabled = false*/
+    func startTimer(){
+        timerCounter = 0
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    }
     
-    /*trueButton.setTitle(question.options[0], for: UIControlState.normal)
-     falseButton.setTitle(question.options[1], for: UIControlState.normal)
-     Answer3Button.setTitle(question.options[2], for: UIControlState.normal)
-     Answer4Button.setTitle(question.options[3], for: UIControlState.normal)*/
+        
+    func timerAction() {
+            timerCounter += 1
+            messageLabel.text = "\(timerCounter)"
+    }
     
 }
 

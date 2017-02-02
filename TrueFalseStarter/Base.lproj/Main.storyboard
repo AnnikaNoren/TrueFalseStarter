@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Um3-hH-Pi1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.98620688915252686" green="0.43266148301081092" blue="0.27334661482279526" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Rfd-4s-ZVH">
@@ -113,7 +113,7 @@
                             <constraint firstItem="K17-uy-MvB" firstAttribute="top" secondItem="Rfd-4s-ZVH" secondAttribute="bottom" constant="60" id="5i8-jd-sJB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rfd-4s-ZVH" secondAttribute="trailing" constant="20" id="8Yq-Cj-DtU"/>
                             <constraint firstItem="Rfd-4s-ZVH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Dug-Db-oHe"/>
-                            <constraint firstItem="Rfd-4s-ZVH" firstAttribute="top" secondItem="nY1-PU-gwQ" secondAttribute="bottom" constant="55" id="Eoo-zM-N5u"/>
+                            <constraint firstItem="Rfd-4s-ZVH" firstAttribute="top" secondItem="nY1-PU-gwQ" secondAttribute="bottom" constant="45" id="Eoo-zM-N5u"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="FMg-76-4vb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nY1-PU-gwQ" secondAttribute="trailing" constant="20" id="HR4-Lp-cJS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I3V-ih-1Ky" secondAttribute="trailing" constant="20" id="HXb-pg-C6R"/>
